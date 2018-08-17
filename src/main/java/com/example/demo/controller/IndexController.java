@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import java.util.Date;
+
 import java.util.HashMap;
+
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,10 @@ import com.example.demo.bean.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 @Api(tags="UserOrder Controller")
 @RestController
 @RequestMapping(value = "/index")
@@ -35,6 +41,11 @@ public class IndexController {
 	@GetMapping
 	@ApiOperation("查询详细信息")
 	public String index() {
+		
+		log.debug("this is a log test, debug");
+		log.info("this is a log test, info");
+		log.warn("this is a log test, warn");
+		
 		return "hello world";
 	}
 
