@@ -15,5 +15,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Chongqing
+ #当前开发环境，开发，生产，测试
   profiles:
     active: prod
