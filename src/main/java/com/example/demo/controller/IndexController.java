@@ -17,7 +17,7 @@ import com.example.demo.bean.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags="查询用户信息控制器")
+@Api(tags="UserOrder Controller")
 @RestController
 @RequestMapping(value = "/index")
 public class IndexController {
