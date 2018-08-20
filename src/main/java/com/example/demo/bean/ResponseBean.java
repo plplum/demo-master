@@ -1,13 +1,3 @@
-/**
- * All rights Reserved, Designed By www.dasdao.com
- * @Title:  ResponseBean.java
- * @Package com.dasdao.model.base
- * @Description: 通用的返回数据结构定义类
- * @author:  大商道商品交易市场股份有限公司
- * @date:    2017年9月14日 下午1:40:24
- * @Copyright: 2017 www.dasdao.com Inc. All rights reserved.
- * 注意：本内容仅限于大商道商品交易市场股份有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
 package com.example.demo.bean;
 
 import java.io.Serializable;
