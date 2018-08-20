@@ -1,9 +1,13 @@
 package com.example.demo.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
-    private Integer id;
+public class Order implements Serializable{
+    
+	private static final long serialVersionUID = -5999681432880620452L;
+
+	private Integer id;
 
     private String orderNo;
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bean.Order;
+import com.example.demo.bean.ResponseBean;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,11 +39,19 @@ public class OrderController {
 		return stu;
 	}
 	
-	@ResponseBody
+	/*@ResponseBody
 	@GetMapping(value = "/getAllOrder")
 	@ApiOperation("查询所有订单信息")
 	private List<Order> getAllOrder() {
 		return orderService.getAllOrder();
+	}*/
+	
+	
+	@ResponseBody
+	@GetMapping(value = "/getAllOrder")
+	@ApiOperation("查询所有订单信息")
+	private ResponseBean<List<Order>> getAllOrder() {
+		return new ResponseBean<>(orderService.getAllOrder());
 	}
 	
 	@PostMapping(value = "/addOrder")
@@ -62,10 +71,18 @@ public class OrderController {
 		return orderService.updateOrder(order);
 	}
 	
-	@PostMapping(value = "/deleteOrder")
+	/*@PostMapping(value = "/deleteOrder")
 	@ApiOperation("删除订单")
 	private int deleteOrder(@RequestParam int orderId) {
 		return orderService.deleteOrderById(orderId);
-	}
+	}*/
 
+	@PostMapping(value = "/deleteOrder")
+	@ApiOperation("删除订单")
+	private ResponseBean<Integer> deleteOrder(@RequestParam int orderId) {
+		return new ResponseBean<>(orderService.deleteOrderById(orderId));
+	}
+	
+	
+	
 }
