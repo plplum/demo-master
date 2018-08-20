@@ -3,5 +3,40 @@
     "name": "roncoo.secret",
     "type": "java.lang.String",
     "description": "A description for 'roncoo.secret'"
+  },
+  {
+    "name": "datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource.url'"
+  },
+  {
+    "name": "datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource.username'"
+  },
+  {
+    "name": "datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource.password'"
+  },
+  {
+    "name": "datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'datasource.driver-class-name'"
+  },
+  {
+    "name": "roncoo.number",
+    "type": "java.lang.String",
+    "description": "A description for 'roncoo.number'"
+  },
+  {
+    "name": "roncoo.name",
+    "type": "java.lang.String",
+    "description": "A description for 'roncoo.name'"
+  },
+  {
+    "name": "roncoo.desc",
+    "type": "java.lang.String",
+    "description": "A description for 'roncoo.desc'"
   }
 ]}

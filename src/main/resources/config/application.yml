@@ -8,13 +8,32 @@ roncoo:
 #端口
 server: 
   port: 8090
-  
+
+mybatis:
+    type-aliases-package: com.example.demo.bean
+    mapper-locations: classpath:mapper/*.xml
+
 
 #spring jsckson
 spring: 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Chongqing
- #当前开发环境，开发，生产，测试
+    
+    #当前开发环境，开发，生产，测试
   profiles:
-    active: prod
+    active: dev
+    
+  #数据源配置
+  datasource:
+      url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      
+
+
+    
+    
