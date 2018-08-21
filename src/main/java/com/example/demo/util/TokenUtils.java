@@ -14,14 +14,14 @@ import java.util.Date;
 
 /**
  * token生成
- *  @author luomouren
+ *  @author 
  */
 public class TokenUtils {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     /**
      * 签名秘钥
      */
-    public static final String SECRET = "guangYuan";
+    public static final String SECRET = "example";
 
     /**
      * 生成token
@@ -29,8 +29,8 @@ public class TokenUtils {
      * @return
      */
     public static String createJwtToken(String id){
-        String issuer = "www.guangyuanbj.com";
-        String subject = "luoyp@guangyuanbj.com";
+        String issuer = "www.example.com";
+        String subject = "www.example.com";
         long ttlMillis = System.currentTimeMillis(); 
         return createJwtToken(id, issuer, subject, ttlMillis);
     }

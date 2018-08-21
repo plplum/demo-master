@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.annotation.LoginRequired;
 import com.example.demo.bean.Order;
 import com.example.demo.bean.ResponseBean;
+import com.example.demo.bean.SysUser;
 import com.example.demo.service.OrderService;
+import com.example.demo.util.IConstant;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,10 +36,21 @@ public class OrderController {
 		return "hello book";
 	}
 
+	@LoginRequired
 	@ResponseBody
 	@GetMapping(value = "/getOrder")
 	@ApiOperation("根据id查询订单信息")
 	public Order getOrder() {
+		Order stu = orderService.getOrderById(1);
+		return stu;
+	}
+	
+	@LoginRequired
+	@ResponseBody
+	@GetMapping(value = "/getOrderByName")
+	@ApiOperation("根据id查询订单信息")
+	public Order getOrderByName(@RequestAttribute(IConstant.CURRENT_USER) SysUser user) {
+		System.out.println("user = " + user.getName());
 		Order stu = orderService.getOrderById(1);
 		return stu;
 	}
@@ -55,6 +69,7 @@ public class OrderController {
 	private ResponseBean<List<Order>> getAllOrder() {
 		return new ResponseBean<>(orderService.getAllOrder());
 	}
+	
 	
 	@PostMapping(value = "/addOrder")
 	@ApiOperation("新增订单")
