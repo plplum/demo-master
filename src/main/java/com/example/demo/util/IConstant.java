@@ -8,4 +8,9 @@ public interface IConstant {
 	public static final int NUM_2 = 2;
 	public static final int NUM_3 = 3;
 	public static final String STR_SUCCESS = "SUCCESS"; 
+	
+	/**
+     * 当前用户参数名
+     */
+    public final static String CURRENT_USER = "CurrentUser";
 }

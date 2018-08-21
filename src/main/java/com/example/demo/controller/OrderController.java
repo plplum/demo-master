@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.annotation.LoginRequired;
 import com.example.demo.bean.Order;
 import com.example.demo.bean.ResponseBean;
+import com.example.demo.service.OrderService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 public class OrderController {
 
 	@Autowired
-	private com.example.demo.service.OrderService orderService;
+	private OrderService orderService;
 
 	@GetMapping
 	@ApiOperation("查询详细信息")
@@ -46,7 +48,7 @@ public class OrderController {
 		return orderService.getAllOrder();
 	}*/
 	
-	
+	@LoginRequired
 	@ResponseBody
 	@GetMapping(value = "/getAllOrder")
 	@ApiOperation("查询所有订单信息")
