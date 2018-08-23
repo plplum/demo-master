@@ -32,7 +32,7 @@ public class TokenUtils {
         String issuer = "www.example.com";
         String subject = "www.example.com";
         //long ttlMillis = System.currentTimeMillis(); 
-        long ttlMillis = 30*1000; //token有效期
+        long ttlMillis = 60*1000 * 30; //token有效期
         return createJwtToken(id, issuer, subject, ttlMillis);
     }
     
