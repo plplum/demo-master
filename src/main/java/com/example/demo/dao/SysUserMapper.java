@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.demo.bean.SysUser;
 
 public interface SysUserMapper {
@@ -16,4 +18,6 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
     
     SysUser selectByName(String userName);
+    
+    SysUser login(@Param("userName") String userName, @Param("password") String password);
 }

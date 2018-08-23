@@ -1,5 +1,7 @@
 package com.example.demo.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class SysUser {
     private Integer id;
 

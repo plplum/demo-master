@@ -15,6 +15,7 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -22,6 +23,12 @@
     where name = #{userName,jdbcType=VARCHAR}
   </select>
   
+  <select id="login" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where name = #{userName,jdbcType=VARCHAR} and pass = #{password,jdbcType=VARCHAR}
+  </select>
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

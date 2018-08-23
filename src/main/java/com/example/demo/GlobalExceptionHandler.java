@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
             Exception exception) throws Exception  
     {  
         String error = exception.getLocalizedMessage();
-        return new ResponseBean<>(error);
+        return new ResponseBean<>(exception, error);
     }  
 
 }

@@ -11,9 +11,10 @@ import com.example.demo.dao.SysUserMapper;
 import com.example.demo.service.LoginService;
 import com.example.demo.util.TokenUtils;
 
+
 /**
  * @description:登录接口实现
- * @author:@luomouren.
+ * @author:@.
  * @Date:2017-12-10 12:00
  */
 @Service
@@ -50,11 +51,15 @@ public class LoginServiceImpl implements LoginService {
             }
         }
 */
-    	SysUser sysUser = sysUserMapper.selectByName(userName);
+    	SysUser sysUser = sysUserMapper.login(userName, password);
+    	//SysUser sysUser = sysUserMapper.selectByName(userName);
     	String accessToken = TokenUtils.createJwtToken(userName);
-    	sysUser.setName(userName);
-    	sysUser.setToken(accessToken);
-    	
+    	if (sysUser!=null) {
+    		sysUser.setName(userName);
+        	sysUser.setToken(accessToken);
+		}else {
+			throw new RuntimeException("用户名或密码错误.");
+		}
         return sysUser;
     }
 

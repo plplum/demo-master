@@ -3,6 +3,8 @@ package com.example.demo.config;
 
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -59,10 +61,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Claims claims = null;
             try {
             	claims = TokenUtils.parseJWT(accessToken);
+			} catch (ExpiredJwtException e) {
+				throw new RuntimeException("token已失效，请重新登录");
 			} catch (Exception e) {
-				throw new RuntimeException("用户不存在，请重新登录11111");
+				System.out.println(e);
+				throw new RuntimeException("用户不存在，请重新登录");
 			}
-            
             if (claims!=null) {
             	String userName = claims.getId();
                 SysUser user = userService.getUserByName(userName);
