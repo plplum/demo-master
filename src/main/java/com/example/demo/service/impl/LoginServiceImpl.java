@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.bean.SysUser;
 import com.example.demo.dao.SysUserMapper;
 import com.example.demo.service.LoginService;
+import com.example.demo.util.MybatisRedisCache;
+import com.example.demo.util.MybatisRedisCache2;
 import com.example.demo.util.TokenUtils;
 
 
@@ -55,6 +57,8 @@ public class LoginServiceImpl implements LoginService {
     	if (sysUser!=null) {
     		sysUser.setName(userName);
         	sysUser.setToken(accessToken);
+        	MybatisRedisCache cache = new MybatisRedisCache("user_login");
+        	cache.putObject(userName, accessToken);
 		}else {
 			throw new RuntimeException("用户名或密码错误.");
 		}

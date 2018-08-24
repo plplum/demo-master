@@ -4,8 +4,10 @@ package com.example.demo.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import redis.clients.jedis.Jedis;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +16,8 @@ import com.example.demo.annotation.LoginRequired;
 import com.example.demo.bean.SysUser;
 import com.example.demo.service.UserService;
 import com.example.demo.util.IConstant;
+import com.example.demo.util.MybatisRedisCache;
+import com.example.demo.util.MybatisRedisCache2;
 import com.example.demo.util.TokenUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,11 +77,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 if (user == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
-                
+                MybatisRedisCache cache = new MybatisRedisCache("user_login");
+            	String lastToken = (String) cache.getObject(userName);
+                if (StringUtils.isEmpty(lastToken)||!accessToken.equals(lastToken)) {
+                	throw new RuntimeException("token已失效111，请重新登录");
+				}    
                 // 当前登录用户@CurrentUser
                 request.setAttribute(IConstant.CURRENT_USER, user);
 			}
-            
             return true;
         }else{
             return true;

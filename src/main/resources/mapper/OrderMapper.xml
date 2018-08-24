@@ -11,7 +11,7 @@
     id, order_no, create_time
   </sql>
   
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="BaseResultMap" >
          SELECT * FROM order_info
   </select>
   
